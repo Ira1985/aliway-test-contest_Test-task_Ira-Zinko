@@ -1,4 +1,4 @@
-import Influencer from './models/Influencer';
+import Influencer from './models/Influencer'
 
 export default class FieldService {
   private influencers: Array<Influencer> = [
@@ -56,10 +56,10 @@ export default class FieldService {
   getInfluencers (): Promise<Array<Influencer>> {
     return new Promise(resolve => {
       setTimeout(() => {
-        const clonedInfluencers = this.influencers.map(influencer => influencer);
-        resolve(clonedInfluencers);
-      }, 10);
-    });
+        const clonedInfluencers = this.influencers.map(influencer => influencer)
+        resolve(clonedInfluencers)
+      }, 10)
+    })
   }
 
   /**
@@ -68,10 +68,9 @@ export default class FieldService {
    * @returns {Influencer | null}
    */
   private getInfluencerSync (influencerId: string | null = null): Influencer | null {
-    if (influencerId === null)
-      return null;
-    const influencer = this.influencers.find(influencer => influencer.id === influencerId);
-    return influencer || null;
+    if (influencerId === null) { return null }
+    const influencer = this.influencers.find(influencer => influencer.id === influencerId)
+    return influencer || null
   }
 
   /**
@@ -82,10 +81,10 @@ export default class FieldService {
   getInfluencer (influencerId: string | null = null): Promise<Influencer | null> {
     return new Promise(resolve => {
       setTimeout(() => {
-        const influencer = this.getInfluencerSync(influencerId);
-        const clonedInfluencer = influencer ? new Influencer(influencer) : null;
-        resolve(clonedInfluencer);
-      }, 10);
-    });
+        const influencer = this.getInfluencerSync(influencerId)
+        const clonedInfluencer = influencer ? new Influencer(influencer) : null
+        resolve(clonedInfluencer)
+      }, 10)
+    })
   }
 }
