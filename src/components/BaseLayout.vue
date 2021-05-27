@@ -16,9 +16,9 @@ import Field from '@/models/Field'
 export default class BaseLayout extends Vue {
     items: unknown[] = []
     fields = [
-      new Field<Influencer>('name', false, 'Информация о инфлюенсере', null),
-      new Field<Influencer>('followers', true, 'Количество подписчиков', null),
-      new Field<Influencer>('er', true, 'Рейтинг увлеченности', '%')
+      new Field<Influencer>('name', false, 'Информация о инфлюенсере', null, null),
+      new Field<Influencer>('followers', true, 'Количество подписчиков', null, null),
+      new Field<Influencer>('er', true, 'Рейтинг увлеченности', '%', null)
     ]
 
     async mounted (): Promise<Influencer[]> {

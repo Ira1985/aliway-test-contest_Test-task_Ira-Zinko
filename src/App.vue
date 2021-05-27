@@ -1,16 +1,19 @@
 <template>
   <div id="app">
-    <BaseLayout></BaseLayout>
+
+    <BaseOfMovies></BaseOfMovies>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import BaseLayout from '@/components/BaseLayout.vue'
+import BaseOfMovies from '@/components/MovieComponents/BaseOfMovies.vue'
 
 @Component({
   components: {
-    BaseLayout
+    BaseLayout,
+    BaseOfMovies
   }
 })
 export default class App extends Vue {}

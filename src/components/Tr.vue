@@ -1,18 +1,24 @@
 <template>
   <tr :class="'row-el'">
-    <td v-for="field in fields" :key="field.label" :class="'fields'">{{influencer[field.label]}} {{field.unit ? field.unit : ''}}</td>
+    <td v-for="field in fields" :key="field.label" :class="'fields'">
+      <TrContent :image="field.url" :text="( field.url ? field.url : '') + influencer[field.label] + ' ' + ( field.unit ? field.unit : '' )"></TrContent>
+    </td>
   </tr>
 </template>
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import Field from '@/models/Field'
-import Influencer from '@/models/Influencer'
+import TrContent from '@/components/TrContent.vue'
 
-@Component
+@Component({
+  components: {
+    TrContent
+  }
+})
 export default class Tr extends Vue {
   @Prop() private influencer!: unknown;
-  @Prop() private fields!: Array<Field<Influencer>>;
+  @Prop() private fields!: Array<Field<unknown>>;
 }
 </script>
 

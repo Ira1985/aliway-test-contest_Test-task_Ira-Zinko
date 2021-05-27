@@ -4,13 +4,15 @@ export default class Field<T> {
   private _sortBy: 'desc' | 'asc'
   private _alias: string
   private _unit: string | null
+  private _url: string | null
 
-  constructor (label: keyof T, sortable: boolean, alias: string, unit: string | null) {
+  constructor (label: keyof T, sortable: boolean, alias: string, unit: string | null, url: string | null) {
     this._label = label
     this._alias = alias
     this._sortable = sortable
     this._sortBy = 'desc'
     this._unit = unit
+    this._url = url
   }
 
   get sortBy (): 'desc' | 'asc' {
@@ -35,5 +37,9 @@ export default class Field<T> {
 
   get unit (): string | null {
     return this._unit
+  }
+
+  get url (): string | null {
+    return this._url
   }
 }
