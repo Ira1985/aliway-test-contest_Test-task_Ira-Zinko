@@ -1,10 +1,14 @@
 <template>
-  <div>
-    <select v-model="selected" multiple>
-      <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
-    </select>
-    <p>Выбрано {{selected}}</p>
-    <Table :items="items" :fields="fields"></Table>
+  <div :class="'main-block'">
+    <div :class="'menu-block'">
+      <select v-model="selected" multiple>
+        <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
+      </select>
+      <ItemCheckedList v-for="genre in genres" :key="genre.id" :item="genre" :selected="selected"></ItemCheckedList>
+    </div>
+    <div :class="'content-block'">
+      <Table :items="items" :fields="fields"></Table>
+    </div>
   </div>
 </template>
 
@@ -15,9 +19,10 @@ import Movie from '@/models/Movie'
 import { movieService } from '@/services/MovieService'
 import Table from '@/components/Table.vue'
 import Genre from '@/models/Genre'
+import ItemCheckedList from '@/components/ItemCheckedList.vue'
 
 @Component({
-  components: { Table }
+  components: { ItemCheckedList, Table }
 })
 export default class BaseOfMovies extends Vue {
         items: Movie[] = []
@@ -53,6 +58,25 @@ export default class BaseOfMovies extends Vue {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
+  .main-block {
+    background-color: darkgray;
+    display: flex;
+    flex-direction: row;
+    width: 98vw;
+    height: 100vh;
+    border-radius: 10px;
+    padding-top: 60px;
+    margin: 0 auto;
+    .menu-block {
+      width: 150px;
+      height: 100%;
+    }
+    .content-block {
+      width: calc(100% - 160px);
+      height: 100%;
+      overflow-x: auto;
+    }
+  }
 
 </style>
