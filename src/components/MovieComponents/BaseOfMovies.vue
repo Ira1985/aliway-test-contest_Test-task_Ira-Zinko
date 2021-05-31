@@ -1,10 +1,8 @@
 <template>
   <div :class="'main-block'">
     <div :class="'menu-block'">
-      <select v-model="selected" multiple>
-        <option v-for="genre in genres" :key="genre.id" :value="genre.id">{{genre.name}}</option>
-      </select>
-      <ItemCheckedList v-for="genre in genres" :key="genre.id" :item="genre" :selected="selected"></ItemCheckedList>
+
+      <ItemCheckedList v-for="genre in genres" :key="genre.id" :item="genre" v-model="selected"></ItemCheckedList>
     </div>
     <div :class="'content-block'">
       <Table :items="items" :fields="fields"></Table>
@@ -32,6 +30,10 @@ export default class BaseOfMovies extends Vue {
           new Field<Movie>('backdrop_path', false, '', null, 'https://image.tmdb.org/t/p/w500'),
           new Field<Movie>('title', true, 'Название фильма', null, null)
         ]
+
+        selectMoviesGenres = (newValue: Genre): void => {
+          console.log('selectMoviesGenres', newValue)
+        }
 
         @Watch('selected')
         async onPropertyChanged (value: string, oldValue: string): Promise<Movie[]> {
