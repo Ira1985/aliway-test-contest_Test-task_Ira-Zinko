@@ -10,16 +10,16 @@ import { Component, Prop, Model, Emit, Vue } from 'vue-property-decorator'
 @Component
 export default class ItemCheckedList extends Vue {
         @Prop() item!: unknown
-        @Prop() selected!: unknown[]
         @Model('change', { type: Array }) changedGenres!: unknown[]
         @Emit('change')
         select (v: any) {
+          const arr = this.changedGenres
           if (v.target.checked) {
-            this.changedGenres.push(v.target.value)
+            arr.push(v.target.value)
           } else {
-            this.changedGenres.splice(this.changedGenres.indexOf(v.target.value), 1)
+            arr.splice(arr.indexOf(v.target.value), 1)
           }
-          return this.changedGenres
+          return arr
         }
 }
 </script>

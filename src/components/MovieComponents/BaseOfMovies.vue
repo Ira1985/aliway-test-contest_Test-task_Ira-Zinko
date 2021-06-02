@@ -2,7 +2,7 @@
   <div :class="'main-block'">
     <div :class="'menu-block'">
 
-      <ItemCheckedList v-for="genre in genres" :key="genre.id" :item="genre" v-model="selected"></ItemCheckedList>
+      <item-checked-list v-for="genre in genres" :key="genre.id" :item="genre" v-model="selected"></item-checked-list>
     </div>
     <div :class="'content-block'">
       <Table :items="items" :fields="fields"></Table>
